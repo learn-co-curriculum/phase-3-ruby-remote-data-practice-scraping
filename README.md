@@ -7,9 +7,9 @@
 
 ## Introduction
 
-In two previous lessons we worked with APIs in order to retrieve data from external resources––in those cases New York City and Twitter. In our first encounter with an API, we set a web request to the NYC Open Data API which responded with a JSON collection of after school programs and their associated data. In our second encounter with an API, we used the Twitter gem to request data from Twitter. The Twitter gem did the hard work for us of taking the data returned from the API and converting it into Ruby objects. 
+In previous lessons we've become familiar with working with APIs in order to retrieve data from external resources. You may have seen for example, the process of sending an HTTP request to an API and receiving data back from that API in JSON format. You may also have seen the Twitter gem used to request data from Twitter. 
 
-However, this is yet another way for our Ruby programs to retrieve data from external sources: web scraping. Web scraping is the act of parsing a web page's HTML and pulling, or "scraping" pertinent data from that HTML. In this reading, we'll take a brief look at what scraping is and how to accomplish it. Then, we'll move on to a scraping code along exercise. 
+However, there is yet another way for our Ruby programs to retrieve data from external sources: web scraping. Web scraping is the act of parsing a web page's HTML and pulling, or "scraping" pertinent data from that HTML. In this reading, we'll take a brief look at what scraping is and how to accomplish it. Then, we'll move on to a scraping code along exercise. 
 
 ## What is Scraping and Why Use it?
 
@@ -153,7 +153,7 @@ is highlighted in the above image. If you press the down carrot on that light, i
 "350+ lives changed, and counting."
 ```
 
-We found it! That text lives in a span whose class is `"grey-text". Now we're ready to use the `.css` method to grab the text we want: 
+We found it! That text lives in a span whose class is `"grey-text"`. Now we're ready to use the `.css` method to grab the text we want: 
 
 #### Calling the `.css` method
 
