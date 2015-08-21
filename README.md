@@ -118,9 +118,15 @@ If we were to `puts` out `doc` right now, we'd see something like this in our te
   </script> </body> </html>
 ```
 
-Gah! I know this looks awful. It kind of is. But don't worry! Nokogiri will help us parse this. What we're looking at here is all of the HTML that makes up the web page found at [www.flatironschool.com](http://flatironschool.com/). 
+Gah! I know this looks awful. It kind of is. But don't worry! Nokogiri will help us parse this. What we're looking at here is all of the HTML that makes up the web page found at [www.flatironschool.com](http://flatironschool.com/). The massive lines above are actually a snapshot of that HTML converted into a structure of nested nodes by Nokogiri. 
 
-Now, visit the Flatiron School link above and use your browser's developer tools to inspect the page. (You can just right-click anywhere on the page and select "inspect element".)
+#### What are Nested Nodes?
+
+Nested nodes refers to any tree of elements in which parent elements branch off to contain children elements. In fact, we've seen similarly nested structures before when we dealt with nested data structures like hashes. By creating a nested structure, Nokogiri allows us to do things like iterate over a collection of element from the HTML document and use brackets,`[]`, and dot notation to access elements within the nested structure. 
+
+### Using Nokogiri to Extract Data 
+
+Visit [this Flatiron School link](http://flatironschool.com/) and use your browser's developer tools to inspect the page. (You can just right-click anywhere on the page and select "inspect element".)
 
 You should see something like this: 
 
