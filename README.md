@@ -21,9 +21,23 @@ Here's another example: let's say your creating an app that allows a user to sub
 
 These are just a few examples of situations in which scraping might come in handy. Now that we have a few use-cases that illustrate the utility of scraping, let's talk about *how* to scrape. 
 
-## Scraping HTML Using Nokogiri
+## Scraping HTML Using Nokogiri and Open-URI
 
-Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it. Nokogiri works with another Ruby library, Open URI, to open a web page. Then, Nokogiri is able to parse the HTML of that page and offer to you, the programmer, a series of methods that you can use to extract the desired information. Nokogiri makes the level of precision required to extract the necessary data much easier to attain. It works like a fine-toothed saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a fine-toothed saw.
+### Refresher: What is Open-URI?
+
+Open-URI is a module in Ruby that allows us to programatically make HTTP requests. It gives us a bunch of useful methods to make different types of requests, but for this guide, we're interested in only one: `open`. This method takes one argument, a URL, and will return to us the HTML content of that URL.
+
+In other words, running:
+
+```ruby
+html = open('http://www.google.com')
+```
+
+stores the HTML of Google into a variable called html. (More specifically, it actually stores the HTML in a temporaray file that we can then call read on to get the raw HTML. We won't worry about that here though.)
+
+### What is Nokogiri?
+
+Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it. Essentially, Nokogiri allows us to treate a huge string of HTML as if it were a bunch of nested nodes. In doing so, Nokogiri offers you, the programmer, a series of methods that you can use to extract the desired information from these nested nodes. Nokogiri makes the level of precision required to extract the necessary data much easier to attain. It works like a fine-toothed saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a fine-toothed saw.
 
 ![](http://readme-pics.s3.amazonaws.com/akaisora309838.jpg)
 
@@ -47,13 +61,18 @@ require 'open-uri'
 We can use the following line to grab the HTML that makes up the Flatiron School's landing page at flatironschool.com: 
 
 ```ruby
-Nokogiri::HTML(open("http://flatironschool.com/"))
+html = open("http://flatironschool.com/")
+```
+
+Next, we'll use the ` Nokogiri::HTML` method to take the string of HTML returned by open-uri's `open` method and and convert it into a  NodeSet (aka, a bunch of nested "nodes") that we can easily play around with.
+```ruby
+Nokogiri::HTML(html)
 ```
 
 Let's save the HTML document in a variable, `doc` that we can then operate on: 
 
 ```ruby
-doc = Nokogiri::HTML(open("http://flatironschool.com/"))
+doc = Nokogiri::HTML(html)
 ```
 
 If we were to `puts` out `doc` right now, we'd see something like this in our terminal: 
