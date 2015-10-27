@@ -169,7 +169,7 @@ In order to identify it's CSS selector, you click on the magnifying class icon o
 That highlight's it's HTML element for us. Notice that: 
 
 ```html
-<span class="grey-text>...</span>
+<span class="grey-text">...</span>
 ```
 
 is highlighted in the above image. If you press the down carrot on that light, it will open up to show you what that element contains: 
