@@ -3,5 +3,6 @@ tags:
   - nokogiri
   - open-uri
   - xml
-languages: 0
+languages: 
+  - ruby
 resources: 1
