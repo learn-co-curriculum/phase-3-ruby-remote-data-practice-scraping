@@ -25,7 +25,7 @@ These are just a few examples of situations in which scraping might come in hand
 
 ### Refresher: What is Open-URI?
 
-Open-URI is a module in Ruby that allows us to programatically make HTTP requests. It gives us a bunch of useful methods to make different types of requests, but for this guide, we're interested in only one: `open`. This method takes one argument, a URL, and will return to us the HTML content of that URL.
+Open-URI is a module in Ruby that allows us to programmatically make HTTP requests. It gives us a bunch of useful methods to make different types of requests, but for this guide, we're interested in only one: `open`. This method takes one argument, a URL, and will return to us the HTML content of that URL.
 
 In other words, running:
 
@@ -33,11 +33,11 @@ In other words, running:
 html = open('http://www.google.com')
 ```
 
-stores the HTML of Google into a variable called html. (More specifically, it actually stores the HTML in a temporaray file that we can then call read on to get the raw HTML. We won't worry about that here though.)
+stores the HTML of Google into a variable called html. (More specifically, it actually stores the HTML in a temporary file that we can then call read on to get the raw HTML. We won't worry about that here though.)
 
 ### What is Nokogiri?
 
-Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it. Essentially, Nokogiri allows us to treate a huge string of HTML as if it were a bunch of nested nodes. In doing so, Nokogiri offers you, the programmer, a series of methods that you can use to extract the desired information from these nested nodes. Nokogiri makes the level of precision required to extract the necessary data much easier to attain. It works like a fine-toothed saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a fine-toothed saw.
+Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it. Essentially, Nokogiri allows us to treat a huge string of HTML as if it were a bunch of nested nodes. In doing so, Nokogiri offers you, the programmer, a series of methods that you can use to extract the desired information from these nested nodes. Nokogiri makes the level of precision required to extract the necessary data much easier to attain. It works like a fine-toothed saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a fine-toothed saw.
 
 ![](http://readme-pics.s3.amazonaws.com/akaisora309838.jpg)
 
