@@ -230,6 +230,50 @@ We did it! We used Nokogiri to get the HTML of a web page. We used the element i
 
 This was only a brief introduction into the concept and mechanics of scraping. We'll being taking a closer look in the upcoming code along exercise. Keep in mind that scraping is difficult and takes a lot of practice.
 
+### Iterating over elements
+
+Sometimes we want to get a collection of the same elements, so we can iterate over them.
+
+Lets first get a list of the instructors from the `www.flatironschool.com/team` page.
+
+```ruby
+require 'nokogiri'
+require 'open-uri'
+
+html = open("http://flatironschool.com/team")
+doc = Nokogiri::HTML(html)
+
+instructors = doc.css("#instructors .team-holder .person-box")
+```
+
+Even though the Nokogiri gem returns a `Nokogiri::XML::Element` (which looks like an array in ruby), we can use Ruby methods, such as `.each` and `.collect`, to iterate over it.
+
+
+```bash
+[#<Nokogiri::XML::Attr:0x3fcd82a22b84 name="class" value="icon-github2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a238b8 " ">, #<Nokogiri::XML::Element:0x3fcd82a1feac name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1faec name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1f8a8 name="href" value="http://twitter.com/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1f894 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a1ebb0 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1eb10 name="class" value="icon-twitter2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a1be88 " ">, #<Nokogiri::XML::Element:0x3fcd82a1bd20 name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1b8d4 name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1b85c name="href" value="http://www.facebook.com/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1b848 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a1ad58 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1acf4 name="class" value="icon-facebook2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a1a470 " ">, #<Nokogiri::XML::Element:0x3fcd82a1a394 name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1a0d8 name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1b9d8 name="href" value="http://www.linkedin.com/in/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1a9e8 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a17734 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a176bc name="class" value="icon-linkedin2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a16e38 " ">]>, … ]
+```
+
+
+Let's iterator over the instructors array by using `.each` and `puts` `"Flatiron School <3 "` proceeded by a instructors name.
+
+```ruby
+instructors.each do |instructor| 
+  puts "Flatiron School <3 " + instructor.css("h2").text
+end
+```
+
+We'd see something like this:
+
+```bash
+Flatiron School <3 Avi Flombaum
+Flatiron School <3 Joe Burgess
+…
+…
+…
+
+```
+
+
 ### Advanced: Operating on XML
 
 Let's take another look at the element returned to us by our call on the `.css` method: 
