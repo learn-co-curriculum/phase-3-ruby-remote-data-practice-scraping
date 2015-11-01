@@ -25,7 +25,7 @@ These are just a few examples of situations in which scraping might come in hand
 
 ### Refresher: What is Open-URI?
 
-Open-URI is a module in Ruby that allows us to programatically make HTTP requests. It gives us a bunch of useful methods to make different types of requests, but for this guide, we're interested in only one: `open`. This method takes one argument, a URL, and will return to us the HTML content of that URL.
+Open-URI is a module in Ruby that allows us to programmatically make HTTP requests. It gives us a bunch of useful methods to make different types of requests, but for this guide, we're interested in only one: `open`. This method takes one argument, a URL, and will return to us the HTML content of that URL.
 
 In other words, running:
 
@@ -33,11 +33,11 @@ In other words, running:
 html = open('http://www.google.com')
 ```
 
-stores the HTML of Google into a variable called html. (More specifically, it actually stores the HTML in a temporaray file that we can then call read on to get the raw HTML. We won't worry about that here though.)
+stores the HTML of Google into a variable called html. (More specifically, it actually stores the HTML in a temporary file that we can then call read on to get the raw HTML. We won't worry about that here though.)
 
 ### What is Nokogiri?
 
-Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it. Essentially, Nokogiri allows us to treate a huge string of HTML as if it were a bunch of nested nodes. In doing so, Nokogiri offers you, the programmer, a series of methods that you can use to extract the desired information from these nested nodes. Nokogiri makes the level of precision required to extract the necessary data much easier to attain. It works like a fine-toothed saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a fine-toothed saw.
+Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it. Essentially, Nokogiri allows us to treat a huge string of HTML as if it were a bunch of nested nodes. In doing so, Nokogiri offers you, the programmer, a series of methods that you can use to extract the desired information from these nested nodes. Nokogiri makes the level of precision required to extract the necessary data much easier to attain. It works like a fine-toothed saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a fine-toothed saw.
 
 ![](http://readme-pics.s3.amazonaws.com/akaisora309838.jpg)
 
@@ -229,6 +229,50 @@ doc.css(".grey-text").text
 We did it! We used Nokogiri to get the HTML of a web page. We used the element inspector in the browser to ID the CSS selector of the data we wanted to scrape. We used the `.css` Nokogiri method, along with that CSS selector, to grab the element that contains our desired data. Finally, we used the `.text` method to retrieve the desired text. 
 
 This was only a brief introduction into the concept and mechanics of scraping. We'll being taking a closer look in the upcoming code along exercise. Keep in mind that scraping is difficult and takes a lot of practice.
+
+### Iterating over elements
+
+Sometimes we want to get a collection of the same elements, so we can iterate over them.
+
+Lets first get a list of the instructors from the `www.flatironschool.com/team` page.
+
+```ruby
+require 'nokogiri'
+require 'open-uri'
+
+html = open("http://flatironschool.com/team")
+doc = Nokogiri::HTML(html)
+
+instructors = doc.css("#instructors .team-holder .person-box")
+```
+
+Even though the Nokogiri gem returns a `Nokogiri::XML::Element` (which looks like an array in ruby), we can use Ruby methods, such as `.each` and `.collect`, to iterate over it.
+
+
+```bash
+[#<Nokogiri::XML::Attr:0x3fcd82a22b84 name="class" value="icon-github2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a238b8 " ">, #<Nokogiri::XML::Element:0x3fcd82a1feac name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1faec name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1f8a8 name="href" value="http://twitter.com/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1f894 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a1ebb0 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1eb10 name="class" value="icon-twitter2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a1be88 " ">, #<Nokogiri::XML::Element:0x3fcd82a1bd20 name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1b8d4 name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1b85c name="href" value="http://www.facebook.com/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1b848 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a1ad58 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1acf4 name="class" value="icon-facebook2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a1a470 " ">, #<Nokogiri::XML::Element:0x3fcd82a1a394 name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1a0d8 name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1b9d8 name="href" value="http://www.linkedin.com/in/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1a9e8 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a17734 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a176bc name="class" value="icon-linkedin2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a16e38 " ">]>, … ]
+```
+
+
+Let's iterator over the instructors array by using `.each` and `puts` `"Flatiron School <3 "` proceeded by a instructors name.
+
+```ruby
+instructors.each do |instructor| 
+  puts "Flatiron School <3 " + instructor.css("h2").text
+end
+```
+
+We'd see something like this:
+
+```bash
+Flatiron School <3 Avi Flombaum
+Flatiron School <3 Joe Burgess
+…
+…
+…
+
+```
+
 
 ### Advanced: Operating on XML
 
