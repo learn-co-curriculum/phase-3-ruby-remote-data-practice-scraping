@@ -134,7 +134,7 @@ You should see something like this:
 
 The element inspector view on the bottom half of the page is revealing all of the page's HTML to us! In fact, the HTML is it showing us is *exactly the same* as the HTML `put` out to our terminal with the help of Nokogiri and open-uri.  
 
-Now that we understand what Nokogiri is and seen how it opens the HTML that makes up a web page, let's look at how we use to to actually scrape information. 
+Now that we understand what Nokogiri is and seen how it opens the HTML that makes up a web page, let's look at how we use to actually scrape information. 
 
 ### Using CSS Selectors to Get Data 
 
