@@ -291,3 +291,5 @@ The main thing to understand, however, is that Nokogiri collects these objects i
 Scraping is a big topic, and it takes *a lot* of practice to get comfortable doing it. The below resource is a great place to learn more about scraping and even get some practice with simple examples. If you felt really confused by this reading, we recommend checking it out before moving on. 
 
 * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
+
+<a href='https://learn.co/lessons/scraping-reading' data-visibility='hidden'>View this lesson on Learn.co</a>
