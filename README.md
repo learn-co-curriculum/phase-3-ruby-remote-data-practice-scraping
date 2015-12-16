@@ -228,7 +228,7 @@ doc.css(".grey-text").text
 
 We did it! We used Nokogiri to get the HTML of a web page. We used the element inspector in the browser to ID the CSS selector of the data we wanted to scrape. We used the `.css` Nokogiri method, along with that CSS selector, to grab the element that contains our desired data. Finally, we used the `.text` method to retrieve the desired text. 
 
-This was only a brief introduction into the concept and mechanics of scraping. We'll being taking a closer look in the upcoming code along exercise. Keep in mind that scraping is difficult and takes a lot of practice.
+This was only a brief introduction into the concept and mechanics of scraping. We'll be taking a closer look in the upcoming code along exercise. Keep in mind that scraping is difficult and takes a lot of practice.
 
 ### Iterating over elements
 
