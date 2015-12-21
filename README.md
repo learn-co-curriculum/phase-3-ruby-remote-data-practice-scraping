@@ -7,7 +7,7 @@
 
 ## Introduction
 
-In previous lessons we've become familiar with working with APIs in order to retrieve data from external resources. You may have seen for example, the process of sending an HTTP request to an API and receiving data back from that API in JSON format. You may also have seen the Twitter gem used to request data from Twitter. 
+In previous lessons we've become familiar with working with APIs in order to retrieve data from external resources. You may have seen, for example, the process of sending an HTTP request to an API and receiving data back from that API in JSON format. You may also have seen the Twitter gem used to request data from Twitter. 
 
 However, there is yet another way for our Ruby programs to retrieve data from external sources: web scraping. Web scraping is the act of parsing a web page's HTML and pulling, or "scraping" pertinent data from that HTML. In this reading, we'll take a brief look at what scraping is and how to accomplish it. Then, we'll move on to a scraping code along exercise. 
 
@@ -15,9 +15,9 @@ However, there is yet another way for our Ruby programs to retrieve data from ex
 
 As we established above, scraping is a technique used to grab data out of the HTML that makes up a web page. Scraping can be difficult to accomplish––in order to get the data we want, we need to closely examine the HTML and identify exactly which elements contain the information we're interested it. It requires a high degree of precision. 
 
-So, if scraping is so tricky, why do we use it? Well, not all of the data we might be interested in using to program is available to use through APIs. For example, let's say we're creating an app that catalogues popular musicians and searches the web for their upcoming concerts. A quick google search will reveal that, unfortunately for us, there isn't a "Popular Musician" API out there just waiting to be used. There is however, a very comprehensive list of musicians on the Billboard website. In such a scenario, you may want to programmatically grab every musicians name from the Billboard list and store those artists in your own database. 
+So, if scraping is so tricky, why do we use it? Well, not all of the data we might be interested in using to program is available to use through APIs. For example, let's say we're creating an app that catalogues popular musicians and searches the web for their upcoming concerts. A quick Google search will reveal that, unfortunately for us, there isn't a "Popular Musician" API out there just waiting to be used. There is however, a very comprehensive list of musicians on the Billboard website. In such a scenario, you may want to programmatically grab every musician's name from the Billboard list and store those artists in your own database. 
 
-Here's another example: let's say your creating an app that allows a user to subscribe to a news feed. You anticipate that your users are super-tech savvy and might be interested in subscribing to some lesser-known tech news sites. Such sites may not have an API that makes their articles available to you. Instead, you would have to scrape those sites for their latest news articles and send those newest articles to your users. 
+Here's another example: let's say you're creating an app that allows a user to subscribe to a news feed. You anticipate that your users are super-tech savvy and might be interested in subscribing to some lesser-known tech news sites. Such sites may not have an API that makes their articles available to you. Instead, you would have to scrape those sites for their latest news articles and send those newest articles to your users. 
 
 These are just a few examples of situations in which scraping might come in handy. Now that we have a few use-cases that illustrate the utility of scraping, let's talk about *how* to scrape. 
 
@@ -41,7 +41,7 @@ Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it. Ess
 
 ![](http://readme-pics.s3.amazonaws.com/akaisora309838.jpg)
 
-Let's get Nokogiri up and running and look at a very basic example of it's usage. Then, we'll move on to the next lesson, in which you'll try it out for yourself. 
+Let's get Nokogiri up and running and look at a very basic example of its usage. Then, we'll move on to the next lesson, where you'll try it out for yourself. 
 
 ### Installing Nokogiri
 
@@ -164,9 +164,9 @@ How do we determine which selector to use to retrieve the desired information? R
 
 This nice, big, bold statement, "350+ lives changed, and counting.", looks like a pretty good candidate. 
 
-In order to identify it's CSS selector, you click on the magnifying class icon on the top left of the element inspector view and hover it over the element we want to ID ("350+ lives changed, and counting.")
+In order to identify its CSS selector, you click on the magnifying class icon on the top left of the element inspector view and hover it over the element we want to ID ("350+ lives changed, and counting.")
 
-That highlight's it's HTML element for us. Notice that: 
+That highlights its HTML element for us. Notice that: 
 
 ```html
 <span class="grey-text">...</span>
@@ -234,7 +234,7 @@ This was only a brief introduction into the concept and mechanics of scraping. W
 
 Sometimes we want to get a collection of the same elements, so we can iterate over them.
 
-Lets first get a list of the instructors from the `www.flatironschool.com/team` page.
+Let's first get a list of the instructors from the `www.flatironschool.com/team` page.
 
 ```ruby
 require 'nokogiri'
@@ -291,5 +291,3 @@ The main thing to understand, however, is that Nokogiri collects these objects i
 Scraping is a big topic, and it takes *a lot* of practice to get comfortable doing it. The below resource is a great place to learn more about scraping and even get some practice with simple examples. If you felt really confused by this reading, we recommend checking it out before moving on. 
 
 * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
-
-<a href='https://learn.co/lessons/scraping-reading' data-visibility='hidden'>View this lesson on Learn.co</a>
