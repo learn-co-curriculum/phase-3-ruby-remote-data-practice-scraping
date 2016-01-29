@@ -292,4 +292,4 @@ Scraping is a big topic, and it takes *a lot* of practice to get comfortable doi
 
 * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
 
-<a href='https://learn.co/lessons/scraping-reading' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/scraping-reading' title='Scraping HTML With Nokogiri'>Scraping HTML With Nokogiri</a> on Learn.co and start learning to code for free.</p>
