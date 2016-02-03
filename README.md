@@ -254,7 +254,7 @@ Even though the Nokogiri gem returns a `Nokogiri::XML::Element` (which looks lik
 ```
 
 
-Let's iterator over the instructors array by using `.each` and `puts` `"Flatiron School <3 "` proceeded by a instructors name.
+Let's iterate over the instructors array by using `.each` and `puts` `"Flatiron School <3 "` proceeded by a instructors name.
 
 ```ruby
 instructors.each do |instructor| 
@@ -292,4 +292,6 @@ Scraping is a big topic, and it takes *a lot* of practice to get comfortable doi
 
 * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/scraping-reading' title='Scraping HTML With Nokogiri'>Scraping HTML With Nokogiri</a> on Learn.co and start learning to code for free.</p>
+<a href='https://learn.co/lessons/scraping-reading' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/scraping-reading'>Scraping</a> on Learn.co and start learning to code for free.</p>
