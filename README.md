@@ -132,7 +132,7 @@ You should see something like this:
 
 ![](http://readme-pics.s3.amazonaws.com/Screen%20Shot%202015-08-19%20at%205.58.16%20PM.png)
 
-The element inspector view on the bottom half of the page is revealing all of the page's HTML to us! In fact, the HTML is it showing us is *exactly the same* as the HTML `put` out to our terminal with the help of Nokogiri and open-uri.  
+The element inspector view on the bottom half of the page is revealing all of the page's HTML to us! In fact, the HTML it is showing us is *exactly the same* as the HTML `put` out to our terminal with the help of Nokogiri and open-uri.  
 
 Now that we understand what Nokogiri is and seen how it opens the HTML that makes up a web page, let's look at how we use to actually scrape information. 
 
