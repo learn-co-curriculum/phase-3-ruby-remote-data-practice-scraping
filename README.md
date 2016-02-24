@@ -172,7 +172,7 @@ That highlights its HTML element for us. Notice that:
 <span class="grey-text">...</span>
 ```
 
-is highlighted in the above image. If you press the down carrot on that light, it will open up to show you what that element contains: 
+is highlighted in the above image. If you click on the carrot at the left end of that line, it will open up to show you what that element contains: 
 
 ```html
 "350+ lives changed, and counting."
@@ -217,6 +217,8 @@ Okay, still kind of gross. But we're almost there. If you look closely at the el
 
 ```bash
 children=[#<Nokogiri::XML::Text:0x3ff8bdcc12d0 "350+ lives changed,">,
+#<Nokogiri::XML::Element:0x3ff8bdcc11e0 name="br">,
+#<Nokogiri::XML::Text:0x3ff8bdcc0ee8 "and counting.">]
 ```
 
 There's our text! Buried in there. To get it out, we can call `.text` on it: 
