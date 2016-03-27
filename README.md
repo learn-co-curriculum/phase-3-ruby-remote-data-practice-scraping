@@ -122,7 +122,7 @@ Gah! I know this looks awful. It kind of is. But don't worry! Nokogiri will help
 
 #### What are Nested Nodes?
 
-Nested nodes refers to any tree of elements in which parent elements branch off to contain children elements. In fact, we've seen similarly nested structures before when we dealt with nested data structures like hashes. By creating a nested structure, Nokogiri allows us to do things like iterate over a collection of element from the HTML document and use brackets,`[]`, and dot notation to access elements within the nested structure. 
+Nested nodes refers to any tree of elements in which parent elements branch off to contain children elements. In fact, we've seen similarly nested structures before when we dealt with nested data structures like hashes. By creating a nested structure, Nokogiri allows us to do things like iterate over a collection of elements from the HTML document and use brackets,`[]`, and dot notation to access elements within the nested structure. 
 
 ### Using Nokogiri to Extract Data 
 
