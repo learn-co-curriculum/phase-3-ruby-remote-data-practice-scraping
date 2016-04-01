@@ -64,7 +64,7 @@ We can use the following line to grab the HTML that makes up the Flatiron School
 html = open("http://flatironschool.com/")
 ```
 
-Next, we'll use the ` Nokogiri::HTML` method to take the string of HTML returned by open-uri's `open` method and and convert it into a  NodeSet (aka, a bunch of nested "nodes") that we can easily play around with.
+Next, we'll use the ` Nokogiri::HTML` method to take the string of HTML returned by open-uri's `open` method and convert it into a NodeSet (aka, a bunch of nested "nodes") that we can easily play around with.
 ```ruby
 Nokogiri::HTML(html)
 ```
