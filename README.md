@@ -256,7 +256,7 @@ Even though the Nokogiri gem returns a `Nokogiri::XML::Element` (which looks lik
 ```
 
 
-Let's iterate over the instructors array by using `.each` and `puts` `"Flatiron School <3 "` proceeded by a instructors name.
+Let's iterate over the instructors array by using `.each` and `puts` `"Flatiron School <3 "` proceeded by an instructor's name.
 
 ```ruby
 instructors.each do |instructor| 
