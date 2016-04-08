@@ -65,6 +65,7 @@ html = open("http://flatironschool.com/")
 ```
 
 Next, we'll use the ` Nokogiri::HTML` method to take the string of HTML returned by open-uri's `open` method and convert it into a NodeSet (aka, a bunch of nested "nodes") that we can easily play around with.
+
 ```ruby
 Nokogiri::HTML(html)
 ```
@@ -241,7 +242,6 @@ Flatiron School <3 Joe Burgess
 …
 …
 …
-
 ```
 
 
@@ -262,7 +262,5 @@ The main thing to understand, however, is that Nokogiri collects these objects i
 Scraping is a big topic, and it takes *a lot* of practice to get comfortable doing it. The below resource is a great place to learn more about scraping and even get some practice with simple examples. If you felt really confused by this reading, we recommend checking it out before moving on. 
 
 * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
-
-<a href='https://learn.co/lessons/scraping-reading' data-visibility='hidden'>View this lesson on Learn.co</a>
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/scraping-reading'>Scraping</a> on Learn.co and start learning to code for free.</p>
