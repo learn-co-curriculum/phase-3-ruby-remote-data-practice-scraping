@@ -128,7 +128,7 @@ Nokogiri's `.css` method can be called on the `doc` variable that we set equal t
 
 #### Choosing a CSS Selector
 
-How do we determine which selector to use to retrieve the desired information? Remember that the HTML document that Nokogiri retrieved for us to operate on is *exactly the same* HTML that makes up the web page. Let's go back to [www.flatironschool.com](http://wwww.flatironschool.com) and use the element inspector to find the selector of a certain piece of information: 
+How do we determine which selector to use to retrieve the desired information? Remember that the HTML document that Nokogiri retrieved for us to operate on is *exactly the same* HTML that makes up the web page. Let's go back to [www.flatironschool.com](http://www.flatironschool.com) and use the element inspector to find the selector of a certain piece of information: 
 
 ![](http://readme-pics.s3.amazonaws.com/Screen%20Shot%202015-08-19%20at%206.11.34%20PM.png)
 
@@ -264,3 +264,5 @@ Scraping is a big topic, and it takes *a lot* of practice to get comfortable doi
 * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/scraping-reading'>Scraping</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/scraping-reading'>Scraping</a> on Learn.co and start learning to code for free.</p>
