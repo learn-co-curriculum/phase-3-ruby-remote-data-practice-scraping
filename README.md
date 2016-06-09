@@ -2,7 +2,7 @@
 
 ## Objectives
 
-1. Introduce web scraping and it's usages. 
+1. Introduce web scraping and its usages. 
 2. Learn how to use Nokogiri to scrape data from an HTML document. 
 
 ## Introduction
@@ -104,7 +104,7 @@ You should see something like this:
 
 The element inspector view on the bottom half of the page is revealing all of the page's HTML to us! In fact, the HTML it is showing us is *exactly the same* as the HTML `put` out to our terminal with the help of Nokogiri and open-uri.  
 
-Now that we understand what Nokogiri is and seen how it opens the HTML that makes up a web page, let's look at how we use to actually scrape information. 
+Now that we understand what Nokogiri is and seen how it opens the HTML that makes up a web page, let's look at how we use it to actually scrape information. 
 
 ### Using CSS Selectors to Get Data 
 
@@ -128,7 +128,7 @@ Nokogiri's `.css` method can be called on the `doc` variable that we set equal t
 
 #### Choosing a CSS Selector
 
-How do we determine which selector to use to retrieve the desired information? Remember that the HTML document that Nokogiri retrieved for us to operate on is *exactly the same* HTML that makes up the web page. Let's go back to [www.flatironschool.com](http://www.flatironschool.com) and use the element inspector to find the selector of a certain piece of information: 
+How do we determine which selector to use to retrieve the desired information? Remember that the HTML document that Nokogiri retrieved for us to operate on is *exactly the same* HTML that makes up the web page. Let's go back to [www.flatironschool.com](http://wwww.flatironschool.com) and use the element inspector to find the selector of a certain piece of information: 
 
 ![](http://readme-pics.s3.amazonaws.com/Screen%20Shot%202015-08-19%20at%206.11.34%20PM.png)
 
