@@ -128,7 +128,7 @@ Nokogiri's `.css` method can be called on the `doc` variable that we set equal t
 
 #### Choosing a CSS Selector
 
-How do we determine which selector to use to retrieve the desired information? Remember that the HTML document that Nokogiri retrieved for us to operate on is *exactly the same* HTML that makes up the web page. Let's go back to [www.flatironschool.com](http://wwww.flatironschool.com) and use the element inspector to find the selector of a certain piece of information: 
+How do we determine which selector to use to retrieve the desired information? Remember that the HTML document that Nokogiri retrieved for us to operate on is *exactly the same* HTML that makes up the web page. Let's go back to [www.flatironschool.com](http://www.flatironschool.com) and use the element inspector to find the selector of a certain piece of information: 
 
 ![](http://readme-pics.s3.amazonaws.com/Screen%20Shot%202015-08-19%20at%206.11.34%20PM.png)
 
