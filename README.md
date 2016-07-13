@@ -1,4 +1,4 @@
-# Scraping HTML With Nokogiri
+# Scraping HTML with Nokogiri
 
 ## Objectives
 
@@ -208,7 +208,7 @@ This was only a brief introduction into the concept and mechanics of scraping. W
 
 Sometimes we want to get a collection of the same elements, so we can iterate over them.
 
-Let's first get a list of the instructors from the `www.flatironschool.com/team` page.
+Let's first get a list of the instructors from the [flatironschool.com/team](http://flatironschool.com/team) page.
 
 ```ruby
 require 'nokogiri'
@@ -228,7 +228,7 @@ Even though the Nokogiri gem returns a `Nokogiri::XML::Element` (which looks lik
 ```
 
 
-Let's iterate over the instructors array by using `.each` and `puts` `"Flatiron School <3 "` proceeded by an instructor's name.
+Let's iterate over the instructors array with `.each` and `puts` out `"Flatiron School <3 "` followed by an instructor's name.
 
 ```ruby
 instructors.each do |instructor| 
@@ -265,6 +265,4 @@ Scraping is a big topic, and it takes *a lot* of practice to get comfortable doi
 
 * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/scraping-reading'>Scraping</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/scraping-reading'>Scraping</a> on Learn.co and start learning to code for free.</p>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/scraping-reading' title='Scraping HTML with Nokogiri'>Scraping HTML with Nokogiri</a> on Learn.co and start learning to code for free.</p>
