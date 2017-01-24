@@ -136,7 +136,7 @@ How do we determine which selector to use to retrieve the desired information? R
 
 This nice, big, bold statement, "350+ lives changed, and counting.", looks like a pretty good candidate. 
 
-In order to identify its CSS selector, you click on the magnifying class icon on the top left of the element inspector view and hover it over the element we want to ID ("350+ lives changed, and counting.")
+In order to identify its CSS selector, you click on the magnifying glass icon on the top left of the element inspector view and hover it over the element we want to ID ("350+ lives changed, and counting.")
 
 That highlights its HTML element for us. Notice that: 
 
@@ -267,3 +267,5 @@ The main thing to understand, however, is that Nokogiri collects these objects i
 * [Video Review- Scraping and Object Orientation](https://www.youtube.com/watch?v=oXwdOdBUyCI) 
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/scraping-reading' title='Scraping HTML with Nokogiri'>Scraping HTML with Nokogiri</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/scraping-reading'>Scraping</a> on Learn.co and start learning to code for free.</p>
