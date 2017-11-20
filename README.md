@@ -208,13 +208,13 @@ This was only a brief introduction into the concept and mechanics of scraping. W
 
 Sometimes we want to get a collection of the same elements, so we can iterate over them.
 
-Let's first get a list of the instructors from the [flatironschool.com/team](http://flatironschool.com/team) page.
+Let's first get a list of the instructors from the [flatironschool.com/team](https://web.archive.org/web/20160227204808/http://flatironschool.com/team) page.
 
 ```ruby
 require 'nokogiri'
 require 'open-uri'
 
-html = open("http://flatironschool.com/team")
+html = open("https://web.archive.org/web/20160227204808/http://flatironschool.com/team")
 doc = Nokogiri::HTML(html)
 
 instructors = doc.css("#instructors .team-holder .person-box")
