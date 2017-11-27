@@ -7,9 +7,7 @@
 
 ## Introduction
 
-In previous lessons we've become familiar with working with APIs in order to retrieve data from external resources. You may have seen, for example, the process of sending an HTTP request to an API and receiving data back from that API in JSON format. You may also have seen the Twitter gem used to request data from Twitter. 
-
-However, there is yet another way for our Ruby programs to retrieve data from external sources: web scraping. Web scraping is the act of parsing a web page's HTML and pulling, or "scraping" pertinent data from that HTML. In this reading, we'll take a brief look at what scraping is and how to accomplish it. Then, we'll move on to a scraping code along exercise. 
+Web scraping is the act of parsing a web page's HTML and pulling, or "scraping" pertinent data from that HTML. In this reading, we'll take a brief look at what scraping is and how to accomplish it. Then, we'll move on to a scraping code along exercise. 
 
 ## What is Scraping and Why Use it?
 
