@@ -9,8 +9,10 @@
 
 Web scraping is the act of parsing a web page's HTML and pulling, or "scraping"
 pertinent data from that HTML. In this reading, we'll take a brief look at what
-scraping is and how to accomplish it. Then, we'll move on to a scraping code
-along exercise.
+scraping is and how to accomplish it.
+
+A more thorough code-along is coming up next, but if you would like to follow
+along, `lib/scraper.lib` is provided for you.
 
 ## What is Scraping and Why Use it?
 
@@ -93,7 +95,7 @@ scraping. We need to require Nokogiri and open-uri:
 require 'nokogiri'
 require 'open-uri'
 
-#more code coming soon!
+# more code coming soon!
 ```
 
 We can use the following line to grab the HTML that makes up the Flatiron
@@ -120,21 +122,62 @@ doc = Nokogiri::HTML(html)
 If we were to `puts` out `doc` right now, we'd see something like this in our
 terminal:
 
-```bash
+```html
 <!DOCTYPE html>
-<html> <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body> <div class="wrapper"> <header id="header"> <div class="nav-holder holder"> <strong class="logo"><a href="/"><img src="images/logo.png" alt="The Flatiron School"></a></strong> <nav id="nav"> <a href="#" class="opener"><span></span></a> <div class="drop"> <div class="drop-holder"> <ul class="top-nav"> <li class="active hide_mobile"><a href="http://go.flatironschool.com/apply" target="_blank">Apply</a></li> <li class="hide_mobile"><a href="/hire">Partner</a></li> <li class="hide_mobile"><a href="http://precollege.flatironschool.com" target="_blank">Precollege</a></li> <li class="hide_mobile"><a href="http://blog.flatironschool.com/" target="_blank">Blog</a></li> <li class="hide_mobile"><a href="/contact">Contact</a></li> <li class="hide_mobile"><a href="/careers">We're hiring!</a></li> </ul> <ul class="main-nav mega-menu-nav"> <li> <a href="/school">The School</a> <div class="megamenu"> <div class="column quote-container"> <div class="tab-content"> <div id="tab7"> <blockquote> <q>“Best of luck to the new @FlatironSchool group. Looking back, you'll categorize your life as before today and after today.”</q> <cite> <a href="https://twitter.com/mcnameekm/status/298577378274336772" class="twitter"> <span class="icon-twitter"></span> </a> <span class="photo"><span data-picture data-alt="image description"> <span data-src="images/kevin_mcnamee.png"></span> <span data-src="images/kevin_mcnamee.png" data-media="(-webkit-min-device-pixel-ratio:1.5), (min-resolution:1.5dppx)"></span> <!--[if (lt IE 9) & (!IEMobile)]>
-<!-- ... more HTML ... -->
-</body> </html>
+<!--[if lte IE 7]><html id="html" class="deprecated"><![endif]--><!--[if IE 8]><html id="html" class="deprecated"><![endif]--><!--[if IE 9]><html id="html" class="deprecated"><![endif]--><!--[if gt IE 9]><!--><html id="html" class="modern">
+<!--<![endif]--><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+<title>Learn Coding, Data Science, &amp; UX/UI Design | Flatiron School</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v2/global.min.css?v=3.6">
+<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KZZ9JB');</script><!-- End Google Tag Manager --><meta name="description" content="A coding bootcamp with tech’s most effective software engineering and data science courses – online and on-campus in NYC, Houston, DC, Atlanta, Seattle, and London.">
+<link rel="canonical" href="https://flatironschool.com/">
+...
 ```
 
-Gah! I know this looks awful. It kind of is. But don't worry! Nokogiri will help
-us parse this. What we're looking at here is all of the HTML that makes up the
-web page found at [www.flatironschool.com][]. The massive lines above are
-actually a snapshot of that HTML converted into a structure of nested nodes by
-Nokogiri.
+If you look through further, you can find the `body` with lots of content. 
+
+```html
+<body data-env="PRODUCTION" data-options='{"learn_url":"https:\/\/learn.co","hubspot_id":69751,"imgix_domain":"flatiron-v3-production.imgix.net"}'>
+<!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZZ9JB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="
+  site-header
+      site-header--default
+  
+      site-header--shade-color-blue-darker
+  " name="site-header"><!-- Banner Alert --><!-- Background Image --><picture><source media="(min-width: 1600px)" ix-path="20180521FlatironSchool-Selects-26.jpg" ix-params='{
+          "h": 1000,
+          "w": 2000,
+          "fit": "crop",
+          "crop": "faces"
+        }'><source media="(min-width: 720px)" ix-path="20180521FlatironSchool-Selects-26.jpg" ix-params='{
+          "h": 450,
+          "w": 800,
+          "fit": "crop",
+          "crop": "faces"
+        }'><img ix-path="20180521FlatironSchool-Selects-26.jpg" ix-params='{
+          "h": 800,
+          "w": 1600,
+          "fit": "crop",
+          "crop": "faces"
+        }' class="site-header__background-image js__object-fit-image" alt="Change things."></source></source></picture><!-- Mobile content --><div class="site-header__nav level level--vertical-padding-smallest"><div class="level__inner"><div class="site-header__menu js--site-nav">
+<div class="site-header__menu__tray">
+...
+```
+
+On and on. It is _a lot_ to go through, and it can also look pretty messy and
+difficult to read. But don't worry! Nokogiri will help us parse this. What we're
+looking at here is all of the HTML that makes up the web page found at
+[www.flatironschool.com][]. The massive lines above are actually a snapshot of
+that HTML converted into a structure of nested nodes by Nokogiri.
 
 [www.flatironschool.com]: http://flatironschool.com/
 
@@ -149,32 +192,35 @@ access elements within the nested structure.
 
 ### Using Nokogiri to Extract Data
 
-*Note: For this reading, we'll be using the Flatiron School website. However,
+**Note**: For this reading, we'll be using the Flatiron School website. However,
 how you scrape a page is **very specific to the content of the page you are
 trying to scrape**. That means that if the webpage you wrote certain scraping
 code for ever changes, your scraping code will likely no longer work correctly.
 So, the Flatiron School website that this reading refers to **may have
-changed**! Therefore some of the examples here, if they are specific to an
-earlier version of the site, won't work for you to try out on your own. That's
-okay though. Just follow along with the reading and, if you want to try it out,
-feel free to use the examples provided to guide you in scraping content that is
-present on the page. There will be plenty more exercises for you to try out,
-coming right up.*
+changed**! Some of the examples here may specific to an earlier version of the
+site and won't work look or work exactly as shown when you try them out on your
+own. That's okay though. Just follow along with the reading and, if you want to
+try it out, feel free to use the examples provided to guide you in scraping
+content that is present on the page.
 
-Visit [this Flatiron School link][] and use your browser's developer tools to inspect the page. (You can just right-click anywhere on the page and select "inspect element".)
+Visit [this Flatiron School link][] and use your browser's developer tools to
+inspect the page. (You can just right-click anywhere on the page and select
+"inspect element".)
 
 [this Flatiron School link]: http://flatironschool.com/
 
 You should see something like this:
 
-![browser console example](http://readme-pics.s3.amazonaws.com/Screen%20Shot%202015-08-19%20at%205.58.16%20PM.png)
+![browser console example](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_console_example_01.png)
 
-The element inspector view on the bottom half of the page is revealing all of
+The [element inspector][] view on the bottom half of the page is revealing all of
 the page's HTML to us! In fact, the HTML it is showing us is *exactly the same*
 as the HTML `put` out to our terminal with the help of Nokogiri and open-uri.  
 
-Now that we understand what Nokogiri is and seen how it opens the HTML that
+Now that we understand what Nokogiri is and have seen how it opens the HTML that
 makes up a web page, let's look at how we use it to actually scrape information.
+
+[element inspector]: https://developers.google.com/web/tools/chrome-devtools/inspect-styles/
 
 ### Using CSS Selectors to Get Data
 
@@ -209,31 +255,28 @@ How do we determine which selector to use to retrieve the desired information?
 Remember that the HTML document that Nokogiri retrieved for us to operate on is
 *exactly the same* HTML that makes up the web page. Let's go back to
 "www.flatironschool.com" and use the element
-inspector to find the selector of a certain piece of information:
+inspector to find the selector of a certain piece of our HTML. In this, case
+we'll look the element containing the text 'Change things':
 
-![element inspector](http://readme-pics.s3.amazonaws.com/Screen%20Shot%202015-08-19%20at%206.11.34%20PM.png)
+![element inspector](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_inspect_css.png)
 
-This nice, big, bold statement, "350+ lives changed, and counting.", looks like
-a pretty good candidate.
+In order to identify the CSS selector, click the button in the upper left corner of the console pane that looks like a mouse icon partially in a box.
 
-In order to identify its CSS selector, you click on the magnifying glass icon on
-the top left of the element inspector view and hover it over the element we want
-to ID ("350+ lives changed, and counting.")
-
-That highlights its HTML element for us. Notice that:
+Once activated, hover over the 'Change things' text. This will highlight its
+HTML element for us. Notice that:
 
 ```html
-<span class="grey-text">...</span>
+<h1 class="site-header__hero__headline">...</hi>
 ```
 
 is highlighted in the above image. If you click on the carrot at the left end of
-that line, it will open up to show you what that element contains:
+that line, it will open up to show you what that element contains (with lots of spacing around it):
 
 ```html
-"350+ lives changed, and counting."
+"Change things."
 ```
 
-We found it! That text lives in a span whose class is `"grey-text"`. Now we're
+We found it! That text lives in a span whose class is `"site-header__hero__headline"`. Now we're
 ready to use the `.css` method to grab the text we want:
 
 #### Calling the `.css` method
@@ -254,35 +297,62 @@ require 'nokogiri'
 require 'open-uri'
 
 doc = Nokogiri::HTML(open("http://flatironschool.com/"))
-doc.css(".grey-text")
+doc.css(".site-header__hero__headline")
 ```
 
-If we `puts` out the result of that method call:
+If we were to copy and paste the above code into IRB, the last line
+would return something like:
+
+```text
+[#<Nokogiri::XML::Element:0x3fe2d610baa0 name="h1" attributes=[#<Nokogiri::XML::Attr:0x3fe2d610ba3c name="class" value="site-header__hero__headline">] children=[#<Nokogiri::XML::Text:0x3fe2d610b62c "\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      ">]>]
+```
+
+Although dense, it is possible to figure some things out. First of all,
+`doc.css(".site-header__hero__headline")` returned what looks like an Array
+containing one `Nokogiri` object. In actuality, this 'Array' is _also_ a special
+`Nokogiri` object, but works very much like an Array. If you look closely at the
+object contained within it, you'll see that it has the 'Change things' text towards the end! To
+get it out, we can call `.text`:
 
 ```ruby
-puts doc.css(".grey-text")
+doc.css(".site-header__hero__headline").text
 ```
 
-We'd see something like this:
+Using `.text` allows us to access text content inside an element scraped by Nokogiri. Run in IRB, we'd see something like this returned:
 
 ```bash
-[#<Nokogiri::XML::Element:0x3ff8bdcc1a64 name="span" attributes=[#<Nokogiri::XML::Attr:0x3ff8bdcc19d8 name="class" value="grey-text">] children=[#<Nokogiri::XML::Text:0x3ff8bdcc12d0 "350+ lives changed,">, #<Nokogiri::XML::Element:0x3ff8bdcc11e0 name="br">, #<Nokogiri::XML::Text:0x3ff8bdcc0ee8 "and counting.">]>]
+ => "\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      "
 ```
 
-Okay, still kind of gross. But we're almost there. If you look closely at the element above, you'll notice this:
+> **Aside**: Add `.strip` to the end, and we can clean up the extra whitespace and simply return `"Change things."`
 
-```bash
-children=[#<Nokogiri::XML::Text:0x3ff8bdcc12d0 "350+ lives changed,">,
-#<Nokogiri::XML::Element:0x3ff8bdcc11e0 name="br">,
-#<Nokogiri::XML::Text:0x3ff8bdcc0ee8 "and counting.">]
-```
-
-There's our text! Buried in there. To get it out, we can call `.text` on it:
+An interesting thing to note: If you're coding along in the provided
+`lib/scraper.rb` file, using `puts` or `print` on `doc.css` will cause the **HTML
+elements to print out**.
 
 ```ruby
-doc.css(".grey-text").text
- => "350+ lives changed,and counting."
+puts doc.css(".site-header__hero__headline")
 ```
+
+Will print out:
+
+```html
+<h1 class="site-header__hero__headline">
+      
+                  Change things.
+        
+        
+                    
+          
+                      
+          
+              
+      </h1>
+```
+
+However, just as before, we can just add `.text` (and `.strip`) and get only the
+text contained inside the element that we want. Alternatively, using `p` will
+produce the array-like object we saw from before.
 
 We did it! We used Nokogiri to get the HTML of a web page. We used the element
 inspector in the browser to ID the CSS selector of the data we wanted to scrape.
@@ -290,63 +360,116 @@ We used the `.css` Nokogiri method, along with that CSS selector, to grab the
 element that contains our desired data. Finally, we used the `.text` method to
 retrieve the desired text.
 
-This was only a brief introduction into the concept and mechanics of scraping.
-We'll be taking a closer look in the upcoming code along exercise. Keep in mind
-that scraping is difficult and takes a lot of practice.
+### Accessing Other Attributes
+
+Once we've found an element using CSS, we can use Nokogiri to extract various pieces of information from that element. Since `.css` returns a collection, technically a `Nokogiri::XML::NodeSet`, we can look at the first element in the collection by adding `[0]`:
+
+```ruby
+p doc.css(".site-header__hero__headline")[0]
+```
+
+We'll get back the first `Nokogiri` object:
+
+```text
+#<Nokogiri::XML::Element:0x3fee0fd1f1f4 name="h1" attributes=[#<Nokogiri::XML::Attr:0x3fee0fd1f118 name="class" value="site-header__hero__headline">] children=[#<Nokogiri::XML::Text:0x3fee0fd27b9c "\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      ">]>
+```
+
+Looking at the object, we can see it contains some data normally found in the
+HTML like `name`. We can get this info directly by adding the attribute at the
+end of our `doc.css` call:
+
+```ruby
+p doc.css(".site-header__hero__headline")[0].name
+```
+
+Most other attributes are available through the use of `.attributes`. Using `.attributes` will return classes (which we already know in this case), but
+also return other useful content like `alt` and `src` for images.
+
+```ruby
+p doc.css(".site-header__hero__headline")[0].attributes
+```
+
+Since this example doesn't have any other attributes, we'll just get back the
+classes we know:
+
+```text
+{"class"=>#<Nokogiri::XML::Attr:0x3fe2b2842f40 name="class" value="site-header__hero__headline">}
+```
 
 ### Iterating over elements
 
 Sometimes we want to get a collection of the same elements, so we can iterate
-over them.
+over them. For instance, a little further down the [page][] are some of the
+courses offered by Flatiron School. We can practice iterating by trying to
+scrape the titles of all courses from these elements.
 
-Let's first get a list of the instructors from the [flatironschool.com/team][] page.
+[page]: flatironschool.com
 
-[flatironschool.com/team]: https://web.archive.org/web/20160227204808/http://flatironschool.com/team
+![courses](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_courses.png)
+
+This time, if we hover over one of the elements containing a course, we'll see
+there are three classes assigned, `tout__label`, `heading`, and
+`heading--level-4`. Since CSS classes are often shared, we'll use all three to
+try and get only the content we need:
 
 ```ruby
 require 'nokogiri'
 require 'open-uri'
 
-html = open("https://web.archive.org/web/20160227204808/http://flatironschool.com/team")
+html = open("http://flatironschool.com/")
 doc = Nokogiri::HTML(html)
 
-instructors = doc.css("#instructors .team-holder .person-box")
+doc.css(".tout__label.heading.heading--level-4")
 ```
 
-Even though the Nokogiri gem returns a `Nokogiri::XML::Element` (which looks
-like an array in ruby), we can use Ruby methods, such as `.each` and `.collect`,
+> Notice that each class is listed without spaces!
+
+Even though the Nokogiri gem returns a `Nokogiri::XML::NodeSet` (which looks
+like an Array in Ruby), we can use Ruby methods, such as `.each` and `.collect`,
 to iterate over it.
 
 ```bash
-[#<Nokogiri::XML::Attr:0x3fcd82a22b84 name="class" value="icon-github2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a238b8 " ">, #<Nokogiri::XML::Element:0x3fcd82a1feac name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1faec name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1f8a8 name="href" value="http://twitter.com/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1f894 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a1ebb0 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1eb10 name="class" value="icon-twitter2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a1be88 " ">, #<Nokogiri::XML::Element:0x3fcd82a1bd20 name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1b8d4 name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1b85c name="href" value="http://www.facebook.com/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1b848 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a1ad58 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1acf4 name="class" value="icon-facebook2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a1a470 " ">, #<Nokogiri::XML::Element:0x3fcd82a1a394 name="li" children=[#<Nokogiri::XML::Element:0x3fcd82a1a0d8 name="a" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a1b9d8 name="href" value="http://www.linkedin.com/in/aviflombaum">, #<Nokogiri::XML::Attr:0x3fcd82a1a9e8 name="target" value="_blank">] children=[#<Nokogiri::XML::Element:0x3fcd82a17734 name="span" attributes=[#<Nokogiri::XML::Attr:0x3fcd82a176bc name="class" value="icon-linkedin2">]>]>]>, #<Nokogiri::XML::Text:0x3fcd82a16e38 " ">]>, … ]
+[#<Nokogiri::XML::Element:0x3fdf31ee8eb4 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee8e28 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8900 "\n          $1M in Scholarships for Women\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee8748 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee86e4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8270 "\n          What Kind of Coding Program is Right for You?\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee807c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eedfcc name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eeda90 "\n          Attend an Online Info Session\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed8d8 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed860 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eed43c "\n          Coding Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed284 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed220 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eecdc0 "\n          Online Software Engineering\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eecc1c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eecba4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eec744 "\n          Data Science Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eec5a0 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eec53c name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ef3fbc "\n          Online Data Science\n        ">]>]
 ```
 
-Let's iterate over the instructors array with `.each` and `puts` out `"Flatiron
-School <3 "` followed by an instructor's name.
+Instead of just outputing the results of `doc.css`, if we assign them
+to a variable, we can then iterate over that variable with `.each` and `puts` out each course:
 
 ```ruby
-instructors.each do |instructor|
-  puts "Flatiron School <3 " + instructor.css("h2").text
+courses = doc.css(".tout__label.heading.heading--level-4")
+
+courses.each do |course|
+  puts course.text.strip
 end
 ```
 
 We'd see something like this:
 
-```bash
-Flatiron School <3 Avi Flombaum
-Flatiron School <3 Joe Burgess
-…
-…
-…
+```text
+$1M in Scholarships for Women
+What Kind of Coding Program is Right for You?
+Attend an Online Info Session
+Coding Bootcamp Prep
+Online Software Engineering
+Data Science Bootcamp Prep
+Online Data Science
 ```
 
-### Advanced: Operating on XML
+Not _exactly_ the course listing as it scraped some other content as well - a great example how how tricky scraping can be - but we've still achieved iteration!
+
+### Operating on XML
 
 Let's take another look at the element returned to us by our call on the `.css`
-method:
+method. In the previous example, we had many `Nokogiri` objects to iterate over. Looking at just the first one:
 
-```bash
-[#<Nokogiri::XML::Element:0x3ff8bdcc1a64 name="span" attributes=[#<Nokogiri::XML::Attr:0x3ff8bdcc19d8 name="class" value="grey-text">] children=[#<Nokogiri::XML::Text:0x3ff8bdcc12d0 "350+ lives changed,">, #<Nokogiri::XML::Element:0x3ff8bdcc11e0 name="br">, #<Nokogiri::XML::Text:0x3ff8bdcc0ee8 "and counting.">]>]
+```ruby
+p doc.css(".tout__label.heading.heading--level-4")[0]
+```
+
+We get the following:
+
+```text
+#<Nokogiri::XML::Element:0x3fd385890ca4 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fd385890c04 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fd3858906c8 "\n          $1M in Scholarships for Women\n        ">]>
 ```
 
 This is an XML element. XML stands for Extensible Markup Language. Just like
@@ -359,8 +482,7 @@ The main thing to understand, however, is that Nokogiri collects these objects
 into hierarchical data structures, much like the nested arrays and hashes we've
 been building and manipulating for a while now. So, we could iterate over an
 array of Nokogiri objects, use enumerators, grab the values of attributes that
-act as hash keys, etc. We'll get practice with all of this in the upcoming
-exercise.
+act as hash keys, etc...
 
 ## Resources
 
