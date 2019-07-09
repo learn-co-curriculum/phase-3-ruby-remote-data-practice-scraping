@@ -24,10 +24,10 @@ a high degree of precision.
 
 So, if scraping is so tricky, why do we use it? Well, not all of the data we
 might be interested in using to program is available to use through APIs. For
-example, let's say we're creating an app that catalogues popular musicians and
+example, let's say we're creating an app that catalogs popular musicians and
 searches the web for their upcoming concerts. A quick Google search will reveal
 that, unfortunately for us, there isn't a "Popular Musician" API out there just
-waiting to be used. There is however, a very comprehensive list of musicians on
+waiting to be used. There is, however, a very comprehensive list of musicians on
 the Billboard website. In such a scenario, you may want to programmatically grab
 every musician's name from the Billboard list and store those artists in your
 own database.
@@ -60,7 +60,7 @@ In other words, running:
 html = open('http://www.google.com')
 ```
 
-stores the HTML of Google into a variable called html. (More specifically, it
+stores the HTML of Google into a variable, `html`. (More specifically, it
 actually stores the HTML in a temporary file that we can then call read on to
 get the raw HTML. We won't worry about that here though.)
 
@@ -68,12 +68,11 @@ get the raw HTML. We won't worry about that here though.)
 
 Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it.
 Essentially, Nokogiri allows us to treat a huge string of HTML as if it were a
-series of methods that you can use to extract the desired information from these
-bunch of nested nodes. In doing so, Nokogiri offers you, the programmer, a
-nested nodes. Nokogiri makes the level of precision required to extract the
-necessary data much easier to attain. It works like a fine-toothed saw to scrape
-only the necessary data. In fact, that's what "nokogiri" means: a fine-toothed
-saw.
+series of nested objects that you can use to extract the desired information
+using provided methods. Nokogiri makes the level of precision required to
+extract the necessary data much easier to attain. It works like a fine-toothed
+saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a
+fine-toothed saw.
 
 ![fine-toothed saw](http://readme-pics.s3.amazonaws.com/akaisora309838.jpg)
 
@@ -255,7 +254,7 @@ How do we determine which selector to use to retrieve the desired information?
 Remember that the HTML document that Nokogiri retrieved for us to operate on is
 *exactly the same* HTML that makes up the web page. Let's go back to
 "www.flatironschool.com" and use the element
-inspector to find the selector of a certain piece of our HTML. In this, case
+inspector to find the selector of a certain piece of our HTML. In this case,
 we'll look the element containing the text 'Change things':
 
 ![element inspector](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_inspect_css.png)
@@ -396,7 +395,7 @@ to iterate over it.
 [#<Nokogiri::XML::Element:0x3fdf31ee8eb4 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee8e28 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8900 "\n          $1M in Scholarships for Women\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee8748 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee86e4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8270 "\n          What Kind of Coding Program is Right for You?\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee807c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eedfcc name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eeda90 "\n          Attend an Online Info Session\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed8d8 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed860 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eed43c "\n          Coding Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed284 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed220 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eecdc0 "\n          Online Software Engineering\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eecc1c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eecba4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eec744 "\n          Data Science Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eec5a0 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eec53c name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ef3fbc "\n          Online Data Science\n        ">]>]
 ```
 
-Instead of just outputing the results of `doc.css`, if we assign them
+Instead of just outputting the results of `doc.css`, if we assign them
 to a variable, we can then iterate over that variable with `.each` and `puts` out each course:
 
 ```ruby
@@ -420,7 +419,7 @@ Online Data Science
 ```
 
 Not _exactly_ the course listing as it scraped some other content as well - a
-great example how how tricky scraping can be - but we've still achieved
+great example how tricky scraping can be - but we've still achieved
 iteration!
 
 ### Operating on XML
@@ -472,8 +471,8 @@ One last but important method to note is `children`. Adding `children` will
 return any child nodes nested _inside this element_. In this particular example,
 all that is contained is a text node, but this XML element can contain all types
 of XML elements, nested as children. On a webpage, an `h2` HTML element may be
-nested within a `div`. When scraped, this relationship can represented by having
-an XML object named "div" with a child XML object named "h2".
+nested within a `div`. When scraped, this relationship can be represented by
+having an XML object named "div" with a child XML object named "h2".
 
 Nokogiri collects these objects into a hierarchical data structure, much like
 the nested arrays and hashes we've been building and manipulating for a while
@@ -488,20 +487,20 @@ can then filter out the specific parts of the website we need and use additional
 methods like `.text` and `.attributes` to extract the content we want.
 
 As each website is designed differently, scraping tends to require customized code
-for each site you want to scrape. As sites update their sytles and designs, scrapers
+for each site you want to scrape. As sites update their styles and designs, scrapers
 we've built may no longer work.
 
 However, being able to scrape websites gives us access to information that can
-be time consuming or otherwise very difficult to collect. Taking a little time
+be time-consuming or otherwise very difficult to collect. Taking a little time
 to update a scraper is typically much easier and faster than manually updating
 data.
 
 **Note**: One final note about scraping - the content we're getting by scraping
-is all technically publicaly available, as it all visible on public websites. Be
-careful, however, as some content may not be usable without permission. Images,
-for instance, often belong to someone and can have a license attached -
-something you would probably want to look into before scraping any image `src`
-attributes from a site!
+is all technically publicly available, as it all visible on public websites. Be
+careful, however, as some content may not be used without permission or
+licensing. Images, for instance, often belong to someone and can have a license
+attached - something you would probably want to look into before scraping any
+image `src` attributes from a site!
 
 ## Resources
 
