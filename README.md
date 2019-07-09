@@ -143,7 +143,7 @@ terminal:
 ...
 ```
 
-If you look through further, you can find the `body` with lots of content. 
+If you look through further, you can find the `body` with lots of content.
 
 ```html
 <body data-env="PRODUCTION" data-options='{"learn_url":"https:\/\/learn.co","hubspot_id":69751,"imgix_domain":"flatiron-v3-production.imgix.net"}'>
@@ -360,42 +360,6 @@ We used the `.css` Nokogiri method, along with that CSS selector, to grab the
 element that contains our desired data. Finally, we used the `.text` method to
 retrieve the desired text.
 
-### Accessing Other Attributes
-
-Once we've found an element using CSS, we can use Nokogiri to extract various pieces of information from that element. Since `.css` returns a collection, technically a `Nokogiri::XML::NodeSet`, we can look at the first element in the collection by adding `[0]`:
-
-```ruby
-p doc.css(".site-header__hero__headline")[0]
-```
-
-We'll get back the first `Nokogiri` object:
-
-```text
-#<Nokogiri::XML::Element:0x3fee0fd1f1f4 name="h1" attributes=[#<Nokogiri::XML::Attr:0x3fee0fd1f118 name="class" value="site-header__hero__headline">] children=[#<Nokogiri::XML::Text:0x3fee0fd27b9c "\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      ">]>
-```
-
-Looking at the object, we can see it contains some data normally found in the
-HTML like `name`. We can get this info directly by adding the attribute at the
-end of our `doc.css` call:
-
-```ruby
-p doc.css(".site-header__hero__headline")[0].name
-```
-
-Most other attributes are available through the use of `.attributes`. Using `.attributes` will return classes (which we already know in this case), but
-also return other useful content like `alt` and `src` for images.
-
-```ruby
-p doc.css(".site-header__hero__headline")[0].attributes
-```
-
-Since this example doesn't have any other attributes, we'll just get back the
-classes we know:
-
-```text
-{"class"=>#<Nokogiri::XML::Attr:0x3fe2b2842f40 name="class" value="site-header__hero__headline">}
-```
-
 ### Iterating over elements
 
 Sometimes we want to get a collection of the same elements, so we can iterate
@@ -455,12 +419,15 @@ Data Science Bootcamp Prep
 Online Data Science
 ```
 
-Not _exactly_ the course listing as it scraped some other content as well - a great example how how tricky scraping can be - but we've still achieved iteration!
+Not _exactly_ the course listing as it scraped some other content as well - a
+great example how how tricky scraping can be - but we've still achieved
+iteration!
 
 ### Operating on XML
 
 Let's take another look at the element returned to us by our call on the `.css`
-method. In the previous example, we had many `Nokogiri` objects to iterate over. Looking at just the first one:
+method. In the previous example, we had many `Nokogiri` objects to iterate over.
+Looking at just the first one:
 
 ```ruby
 p doc.css(".tout__label.heading.heading--level-4")[0]
@@ -473,16 +440,68 @@ We get the following:
 ```
 
 This is an XML element. XML stands for Extensible Markup Language. Just like
-HTML, it is a set of rules for encoding and displaying data on the web. When we
-use Nokogiri methods, we get a return value of XML elements, collected into an
-array. Technically, methods like `.css` return a Nokogiri data object that is a
-collection of Nokogiri::XML::Element objects that *functions* like an array.  
+HTML, it is a set of rules for encoding and displaying data on the web.
 
-The main thing to understand, however, is that Nokogiri collects these objects
-into hierarchical data structures, much like the nested arrays and hashes we've
-been building and manipulating for a while now. So, we could iterate over an
-array of Nokogiri objects, use enumerators, grab the values of attributes that
-act as hash keys, etc...
+When we use Nokogiri methods, we get XML elements in return. Looking at the
+output object, we can see it has a `name`, "h2". We can get
+this info directly by adding these to the end of our `doc.css` call:
+
+```ruby
+p doc.css(".tout__label.heading.heading--level-4")[0].name
+# => "h2"
+```
+
+This is the name of the XML element, not to be confused with the HTML attribute
+'name' that can be assigned to elements. Those types of attributes can be
+accessed with `.attributes`. Using `.attributes` will return ids, names, and
+classes, but will also return other useful content like `alt` and `src` for
+images.
+
+```ruby
+p doc.css(".tout__label.heading.heading--level-4")[0].attributes
+```
+
+Since this example doesn't have any attributes besides the CSS classes, we just
+get back the classes we already know:
+
+```text
+{"class"=>#<Nokogiri::XML::Attr:0x3ff04f8b3754 name="class" value="tout__label heading heading--level-4">}
+```
+
+One last but important method to note is `children`. Adding `children` will
+return any child nodes nested _inside this element_. In this particular example,
+all that is contained is a text node, but this XML element can contain all types
+of XML elements, nested as children. On a webpage, an `h2` HTML element may be
+nested within a `div`. When scraped, this relationship can represented by having
+an XML object named "div" with a child XML object named "h2".
+
+Nokogiri collects these objects into a hierarchical data structure, much like
+the nested arrays and hashes we've been building and manipulating for a while
+now. This structure allows us to iterate over an array of Nokogiri objects and use
+enumerators to grab the values of attributes and text.
+
+## Conclusion
+
+By using Nokogiri, we can get any website's HTML, represented in XML objects,
+including any text or data displayed on that site. Using methods like `.css`, we
+can then filter out the specific parts of the website we need and use additional
+methods like `.text` and `.attributes` to extract the content we want.
+
+As each website is designed differently, scraping tends to require customized code
+for each site you want to scrape. As sites update their sytles and designs, scrapers
+we've built may no longer work.
+
+However, being able to scrape websites gives us access to information that can
+be time consuming or otherwise very difficult to collect. Taking a little time
+to update a scraper is typically much easier and faster than manually updating
+data.
+
+**Note**: One final note about scraping - the content we're getting by scraping
+is all technically publicaly available, as it all visible on public websites. Be
+careful, however, as some content may not be usable without permission. Images,
+for instance, often belong to someone and can have a license attached -
+something you would probably want to look into before scraping any image `src`
+attributes from a site!
 
 ## Resources
 
