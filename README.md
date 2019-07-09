@@ -1,6 +1,6 @@
 # Scraping HTML with Nokogiri
 
-## Objectives
+## Learning Goals
 
 * Introduce web scraping and its usages.
 * Learn how to use Nokogiri to scrape data from an HTML document.
