@@ -97,6 +97,8 @@ require 'open-uri'
 # more code coming soon!
 ```
 
+![Nokogiri Scraping](https://curriculum-content.s3.amazonaws.com/scraping-reading/Image_11_CodeScraping.png)
+
 We can use the following line to grab the HTML that makes up the Flatiron
 School's landing page at flatironschool.com:
 
