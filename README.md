@@ -67,9 +67,15 @@ get the raw HTML. We won't worry about that here though.)
 ### What is Nokogiri?
 
 Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it.
-Essentially, Nokogiri allows us to treat a huge string of HTML as if it were a
+It allows us to treat a huge string of HTML as if it were a
 series of nested objects that you can use to extract the desired information
-using provided methods. Nokogiri makes the level of precision required to
+using provided methods. Put simply, Nokogiri takes in HTML and spits out a 
+collection of objects we can get information from.
+
+![Nokogiri Scraping](https://curriculum-content.s3.amazonaws.com/scraping-reading/Image_11_CodeScraping.png)
+
+The HTML that would normally be rendered as a webpage can be scraped with 
+Nokogiri into a many small pieces. Nokogiri makes the level of precision required to
 extract the necessary data much easier to attain. It works like a fine-toothed
 saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a
 fine-toothed saw.
@@ -96,8 +102,6 @@ require 'open-uri'
 
 # more code coming soon!
 ```
-
-![Nokogiri Scraping](https://curriculum-content.s3.amazonaws.com/scraping-reading/Image_11_CodeScraping.png)
 
 We can use the following line to grab the HTML that makes up the Flatiron
 School's landing page at flatironschool.com:
