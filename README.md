@@ -238,7 +238,7 @@ In the following code:
 
 ```html
 <div id="my-div">
-  <p class="my-paragraph"></p>
+  
 </div>
 ```
 
@@ -521,4 +521,4 @@ image `src` attributes from a site!
 
 [Nokogiri Installation Guide]: http://www.nokogiri.org/tutorials/installing_nokogiri.html
 
-<p class='util--hide'>View <a href='https://learn.co/lessons/scraping-reading'>Scraping</a> on Learn.co and start learning to code for free.</p>
+
