@@ -329,7 +329,7 @@ Using `.text` allows us to access text content inside an element scraped by Noko
  => "\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      "
 ```
 
-> **Aside**: Add `.strip` to the end, and we can clean up the extra whitespace and simply return `"Change things."`
+**Note**: If we add `.strip` to the end we can clean up the extra whitespace and simply return `"Change things."`
 
 An interesting thing to note: If you're coding along in the provided
 `lib/scraper.rb` file, using `puts` or `print` on `doc.css` will cause the **HTML
@@ -391,7 +391,7 @@ doc = Nokogiri::HTML(html)
 doc.css(".tout__label.heading.heading--level-4")
 ```
 
-> Notice that each class is listed without spaces!
+Notice that each class is listed without spaces!
 
 Even though the Nokogiri gem returns a `Nokogiri::XML::NodeSet` (which looks
 like an Array in Ruby), we can use Ruby methods, such as `.each` and `.collect`,
