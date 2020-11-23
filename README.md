@@ -271,7 +271,7 @@ Once activated, hover over the 'Change things' text. This will highlight its
 HTML element for us. Notice that:
 
 ```html
-<h1 class="site-header__hero__headline">...</hi>
+<h1 class="headline-26OIBN">...</hi>
 ```
 
 is highlighted in the above image. If you click on the carrot at the left end of
@@ -302,25 +302,25 @@ require 'nokogiri'
 require 'open-uri'
 
 doc = Nokogiri::HTML(open("http://flatironschool.com/"))
-doc.css(".site-header__hero__headline")
+doc.css(".headline-26OIBN")
 ```
 
 If we were to copy and paste the above code into IRB, the last line
 would return something like:
 
 ```text
-[#<Nokogiri::XML::Element:0x3fe2d610baa0 name="h1" attributes=[#<Nokogiri::XML::Attr:0x3fe2d610ba3c name="class" value="site-header__hero__headline">] children=[#<Nokogiri::XML::Text:0x3fe2d610b62c "\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      ">]>]
+[#<Nokogiri::XML::Element:0x3fe2d610baa0 name="h1" attributes=[#<Nokogiri::XML::Attr:0x3fe2d610ba3c name="class" value="headline-26OIBN">] children=[#<Nokogiri::XML::Text:0x3fe2d610b62c "\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      ">]>]
 ```
 
 Although dense, it is possible to figure some things out. First of all,
-`doc.css(".site-header__hero__headline")` returned what looks like an Array
+`doc.css(".headline-26OIBN")` returned what looks like an Array
 containing one `Nokogiri` object. In actuality, this 'Array' is _also_ a special
 `Nokogiri` object, but works very much like an Array. If you look closely at the
 object contained within it, you'll see that it has the 'Change things' text towards the end! To
 get it out, we can call `.text`:
 
 ```ruby
-doc.css(".site-header__hero__headline").text
+doc.css(".headline-26OIBN").text
 ```
 
 Using `.text` allows us to access text content inside an element scraped by Nokogiri. Run in IRB, we'd see something like this returned:
@@ -336,13 +336,13 @@ An interesting thing to note: If you're coding along in the provided
 elements to print out**.
 
 ```ruby
-puts doc.css(".site-header__hero__headline")
+puts doc.css(".headline-26OIBN")
 ```
 
 Will print out:
 
 ```html
-<h1 class="site-header__hero__headline">
+<h1 class="headline-26OIBN">
       
                   Change things.
         
