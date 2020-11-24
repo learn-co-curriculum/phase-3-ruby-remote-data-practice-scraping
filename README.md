@@ -368,7 +368,7 @@ retrieve the desired text.
 ### Iterating over elements
 
 Sometimes we want to get a collection of the same elements, so we can iterate
-over them. For instance, a little further down the [page][] are some of the
+over them. For instance, a little further down the [page](https://flatironschool.com/) are some of the
 courses offered by Flatiron School. We can practice iterating by trying to
 scrape the titles of all courses from these elements.
 
@@ -377,8 +377,8 @@ scrape the titles of all courses from these elements.
 ![courses](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_courses.png)
 
 This time, if we hover over one of the elements containing a course, we'll see
-there are three classes assigned, `tout__label`, `heading`, and
-`heading--level-4`. Since CSS classes are often shared, we'll use all three to
+there are two classes assigned, `inlineMobileLeft-2Yo002`, and
+`imageTextBlockGrid2-3jXtmC`. Since CSS classes are often shared, we'll use both to
 try and get only the content we need:
 
 ```ruby
@@ -388,7 +388,7 @@ require 'open-uri'
 html = open("http://flatironschool.com/")
 doc = Nokogiri::HTML(html)
 
-doc.css(".tout__label.heading.heading--level-4")
+doc.css(".inlineMobileLeft-2Yo002.imageTextBlockGrid2-3jXtmC")
 ```
 
 Notice that each class is listed without spaces!
@@ -398,14 +398,14 @@ like an Array in Ruby), we can use Ruby methods, such as `.each` and `.collect`,
 to iterate over it.
 
 ```bash
-[#<Nokogiri::XML::Element:0x3fdf31ee8eb4 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee8e28 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8900 "\n          $1M in Scholarships for Women\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee8748 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee86e4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8270 "\n          What Kind of Coding Program is Right for You?\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee807c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eedfcc name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eeda90 "\n          Attend an Online Info Session\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed8d8 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed860 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eed43c "\n          Coding Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed284 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed220 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eecdc0 "\n          Online Software Engineering\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eecc1c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eecba4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eec744 "\n          Data Science Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eec5a0 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eec53c name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ef3fbc "\n          Online Data Science\n        ">]>]
+[#<Nokogiri::XML::Element:0x3fe543d378a0 name="div" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee8e28 name="class" value="inlineMobileLeft-2Yo002 imageTextBlockGrid2-3jXtmC">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8900 "\n          $1M in Scholarships for Women\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee8748 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee86e4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8270 "\n          What Kind of Coding Program is Right for You?\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee807c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eedfcc name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eeda90 "\n          Attend an Online Info Session\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed8d8 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed860 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eed43c "\n          Coding Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed284 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed220 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eecdc0 "\n          Online Software Engineering\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eecc1c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eecba4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eec744 "\n          Data Science Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eec5a0 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eec53c name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ef3fbc "\n          Online Data Science\n        ">]>]
 ```
 
 Instead of just outputting the results of `doc.css`, if we assign them
 to a variable, we can then iterate over that variable with `.each` and `puts` out each course:
 
 ```ruby
-courses = doc.css(".tout__label.heading.heading--level-4")
+courses = doc.css(".inlineMobileLeft-2Yo002.imageTextBlockGrid2-3jXtmC")
 
 courses.each do |course|
   puts course.text.strip
@@ -415,13 +415,10 @@ end
 We'd see something like this:
 
 ```text
-$1M in Scholarships for Women
-What Kind of Coding Program is Right for You?
-Attend an Online Info Session
-Coding Bootcamp Prep
-Online Software Engineering
-Data Science Bootcamp Prep
-Online Data Science
+Software EngineeringLaunch your career as a full-stack web developer ...
+Data ScienceOur full-time data science program that gives students ...
+Cybersecurity AnalyticsOver 12 intense weeks on campus at Flatiron ...
+Cybersecurity EngineeringFast-track to the skills you need for a new ...
 ```
 
 Not _exactly_ the course listing as it scraped some other content as well - a
@@ -435,25 +432,25 @@ method. In the previous example, we had many `Nokogiri` objects to iterate over.
 Looking at just the first one:
 
 ```ruby
-p doc.css(".tout__label.heading.heading--level-4")[0]
+p doc.css(".inlineMobileLeft-2Yo002.imageTextBlockGrid2-3jXtmC")[0]
 ```
 
-We get the following:
+We get an output similar to the following:
 
 ```text
-#<Nokogiri::XML::Element:0x3fd385890ca4 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fd385890c04 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fd3858906c8 "\n          $1M in Scholarships for Women\n        ">]>
+#<Nokogiri::XML::Element:0x3fd385890ca4 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fd385890c04 name="class" value="inlineMobileLeft-2Yo002 imageTextBlockGrid2-3jXtmC">] children=[#<Nokogiri::XML::Text:0x3fd3858906c8 "\n          $1M in Scholarships for Women\n        ">]>
 ```
 
 This is an XML element. XML stands for Extensible Markup Language. Just like
 HTML, it is a set of rules for encoding and displaying data on the web.
 
 When we use Nokogiri methods, we get XML elements in return. Looking at the
-output object, we can see it has a `name`, "h2". We can get
+output object, we can see it has a `name`, "div". We can get
 this info directly by adding these to the end of our `doc.css` call:
 
 ```ruby
-p doc.css(".tout__label.heading.heading--level-4")[0].name
-# => "h2"
+p doc.css(".inlineMobileLeft-2Yo002.imageTextBlockGrid2-3jXtmC")[0].name
+# => "div"
 ```
 
 This is the name of the XML element, not to be confused with the HTML attribute
@@ -463,14 +460,14 @@ classes, but will also return other useful content like `alt` and `src` for
 images.
 
 ```ruby
-p doc.css(".tout__label.heading.heading--level-4")[0].attributes
+p doc.css(".inlineMobileLeft-2Yo002.imageTextBlockGrid2-3jXtmC")[0].attributes
 ```
 
 Since this example doesn't have any attributes besides the CSS classes, we just
 get back the classes we already know:
 
 ```text
-{"class"=>#<Nokogiri::XML::Attr:0x3ff04f8b3754 name="class" value="tout__label heading heading--level-4">}
+{"class"=>#<Nokogiri::XML::Attr:0x3fe543d3783c name="class" value="inlineMobileLeft-2Yo002 imageTextBlockGrid2-3jXtmC">} 
 ```
 
 One last but important method to note is `children`. Adding `children` will
