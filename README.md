@@ -271,7 +271,7 @@ Once activated, hover over the 'Change things' text. This will highlight its
 HTML element for us. Notice that:
 
 ```html
-<h1 class="headline-26OIBN">...</hi>
+<h1 class="headline-26OIBN">...</h1>
 ```
 
 is highlighted in the above image. If you click on the carrot at the left end of
