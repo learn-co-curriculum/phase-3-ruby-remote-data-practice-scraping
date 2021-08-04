@@ -512,8 +512,6 @@ image `src` attributes from a site!
   even get some practice with simple examples. If you felt really confused by
   this reading, we recommend checking it out before moving on.
   * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
-
-* [Video Review- Scraping and Object Orientation](https://www.youtube.com/watch?v=oXwdOdBUyCI)
 * [Nokogiri Installation Guide][]
 
 [Nokogiri Installation Guide]: http://www.nokogiri.org/tutorials/installing_nokogiri.html
