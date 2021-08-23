@@ -2,8 +2,8 @@
 
 ## Learning Goals
 
-* Introduce web scraping and its usages.
-* Learn how to use Nokogiri to scrape data from an HTML document.
+- Introduce web scraping and its usages.
+- Learn how to use Nokogiri to scrape data from an HTML document.
 
 ## Introduction
 
@@ -41,7 +41,7 @@ send those newest articles to your users.
 
 These are just a few examples of situations in which scraping might come in
 handy. Now that we have a few use-cases that illustrate the utility of scraping,
-let's talk about *how* to scrape.
+let's talk about _how_ to scrape.
 
 ## Scraping HTML Using Nokogiri and Open-URI
 
@@ -52,7 +52,7 @@ requests. It gives us a bunch of useful methods to make different types of
 requests, but for this guide, we're interested in only one: `open`. This method
 takes one argument, a URL, and will return to us the HTML content of that URL.
 
-[Open-URI]: https://ruby-doc.org/stdlib-2.6.3/libdoc/open-uri/rdoc/OpenURI.html
+[open-uri]: https://ruby-doc.org/stdlib-2.6.3/libdoc/open-uri/rdoc/OpenURI.html
 
 In other words, running:
 
@@ -69,12 +69,12 @@ get the raw HTML. We won't worry about that here though.)
 Nokogiri is a Ruby gem that helps us to parse HTML and collect data from it.
 It allows us to treat a huge string of HTML as if it were a
 series of nested objects that you can use to extract the desired information
-using provided methods. Put simply, Nokogiri takes in HTML and spits out a 
+using provided methods. Put simply, Nokogiri takes in HTML and spits out a
 collection of objects we can get information from.
 
 ![Nokogiri Scraping](https://curriculum-content.s3.amazonaws.com/scraping-reading/Image_11_CodeScraping.png)
 
-The HTML that would normally be rendered as a webpage can be scraped with 
+The HTML that would normally be rendered as a webpage can be scraped with
 Nokogiri into a many small pieces. Nokogiri makes the level of precision required to
 extract the necessary data much easier to attain. It works like a fine-toothed
 saw to scrape only the necessary data. In fact, that's what "nokogiri" means: a
@@ -129,23 +129,55 @@ terminal:
 
 ```html
 <!DOCTYPE html>
-<!--[if lte IE 7]><html id="html" class="deprecated"><![endif]--><!--[if IE 8]><html id="html" class="deprecated"><![endif]--><!--[if IE 9]><html id="html" class="deprecated"><![endif]--><!--[if gt IE 9]><!--><html id="html" class="modern">
-<!--<![endif]--><head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
-<title>Learn Coding, Data Science, &amp; UX/UI Design | Flatiron School</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/v2/global.min.css?v=3.6">
-<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KZZ9JB');</script><!-- End Google Tag Manager --><meta name="description" content="A coding bootcamp with tech’s most effective software engineering and data science courses – online and on-campus in NYC, Houston, DC, Atlanta, Seattle, and London.">
-<link rel="canonical" href="https://flatironschool.com/">
-...
+<!--[if lte IE 7]><html id="html" class="deprecated"><!
+[endif]-->[endif]--><!--[if IE 8]><html id="html" class="deprecated"><!
+[endif]-->[endif]--><!--[if IE 9]><html id="html" class="deprecated"><!
+[endif]--><!--[if gt IE 9]><!-->
+<html id="html" class="modern">
+  <!--<!
+  [endif]--><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/assets/images/favicon.ico"
+    />
+    <title>
+      Learn Coding, Data Science, &amp; UX/UI Design | Flatiron School
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/v2/global.min.css?v=3.6" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KZZ9JB");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta
+      name="description"
+      content="A coding bootcamp with tech’s most effective software engineering and data science courses – online and on-campus in NYC, Houston, DC, Atlanta, Seattle, and London."
+    />
+    <link rel="canonical" href="https://flatironschool.com/" />
+    ...
+  </head>
+</html>
 ```
 
 If you look through further, you can find the `body` with lots of content.
@@ -156,7 +188,7 @@ If you look through further, you can find the `body` with lots of content.
 <!-- End Google Tag Manager (noscript) --><header class="
   site-header
       site-header--default
-  
+
       site-header--shade-color-blue-darker
   " name="site-header"><!-- Banner Alert --><!-- Background Image --><picture><source media="(min-width: 1600px)" ix-path="20180521FlatironSchool-Selects-26.jpg" ix-params='{
           "h": 1000,
@@ -212,15 +244,15 @@ Visit [this Flatiron School link][] and use your browser's developer tools to
 inspect the page. (You can just right-click anywhere on the page and select
 "inspect element".)
 
-[this Flatiron School link]: http://flatironschool.com/
+[this flatiron school link]: http://flatironschool.com/
 
 You should see something like this:
 
 ![browser console example](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_console_example_01.png)
 
 The [element inspector][] view on the bottom half of the page is revealing all of
-the page's HTML to us! In fact, the HTML it is showing us is *exactly the same*
-as the HTML `put` out to our terminal with the help of Nokogiri and open-uri.  
+the page's HTML to us! In fact, the HTML it is showing us is _exactly the same_
+as the HTML `put` out to our terminal with the help of Nokogiri and open-uri.
 
 Now that we understand what Nokogiri is and have seen how it opens the HTML that
 makes up a web page, let's look at how we use it to actually scrape information.
@@ -237,9 +269,7 @@ information out of an HTML document.
 In the following code:
 
 ```html
-<div id="my-div">
-  
-</div>
+<div id="my-div"></div>
 ```
 
 The id and class attributes of the HTML elements are the CSS selectors. You
@@ -258,7 +288,7 @@ look.
 
 How do we determine which selector to use to retrieve the desired information?
 Remember that the HTML document that Nokogiri retrieved for us to operate on is
-*exactly the same* HTML that makes up the web page. Let's go back to
+_exactly the same_ HTML that makes up the web page. Let's go back to
 "www.flatironschool.com" and use the element
 inspector to find the selector of a certain piece of our HTML. In this case,
 we'll look the element containing the text 'Change things':
@@ -325,8 +355,8 @@ doc.css(".headline-26OIBN").text
 
 Using `.text` allows us to access text content inside an element scraped by Nokogiri. Run in IRB, we'd see something like this returned:
 
-```bash
- => "\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      "
+```rb
+"\n      \n                  Change things.\n        \n        \n                    \n          \n                      \n          \n              \n      "
 ```
 
 **Note**: If we add `.strip` to the end we can clean up the extra whitespace and simply return `"Change things."`
@@ -342,17 +372,7 @@ puts doc.css(".headline-26OIBN")
 Will print out:
 
 ```html
-<h1 class="headline-26OIBN">
-      
-                  Change things.
-        
-        
-                    
-          
-                      
-          
-              
-      </h1>
+<h1 class="headline-26OIBN">Change things.</h1>
 ```
 
 However, just as before, we can just add `.text` (and `.strip`) and get only the
@@ -397,7 +417,7 @@ Even though the Nokogiri gem returns a `Nokogiri::XML::NodeSet` (which looks
 like an Array in Ruby), we can use Ruby methods, such as `.each` and `.collect`,
 to iterate over it.
 
-```bash
+```rb
 [#<Nokogiri::XML::Element:0x3fe543d378a0 name="div" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee8e28 name="class" value="inlineMobileLeft-2Yo002 imageTextBlockGrid2-3jXtmC">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8900 "\n          $1M in Scholarships for Women\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee8748 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31ee86e4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ee8270 "\n          What Kind of Coding Program is Right for You?\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31ee807c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eedfcc name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eeda90 "\n          Attend an Online Info Session\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed8d8 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed860 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eed43c "\n          Coding Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eed284 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eed220 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eecdc0 "\n          Online Software Engineering\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eecc1c name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eecba4 name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31eec744 "\n          Data Science Bootcamp Prep\n        ">]>, #<Nokogiri::XML::Element:0x3fdf31eec5a0 name="h2" attributes=[#<Nokogiri::XML::Attr:0x3fdf31eec53c name="class" value="tout__label heading heading--level-4">] children=[#<Nokogiri::XML::Text:0x3fdf31ef3fbc "\n          Online Data Science\n        ">]>]
 ```
 
@@ -467,7 +487,7 @@ Since this example doesn't have any attributes besides the CSS classes, we just
 get back the classes we already know:
 
 ```text
-{"class"=>#<Nokogiri::XML::Attr:0x3fe543d3783c name="class" value="inlineMobileLeft-2Yo002 imageTextBlockGrid2-3jXtmC">} 
+{"class"=>#<Nokogiri::XML::Attr:0x3fe543d3783c name="class" value="inlineMobileLeft-2Yo002 imageTextBlockGrid2-3jXtmC">}
 ```
 
 One last but important method to note is `children`. Adding `children` will
@@ -507,13 +527,11 @@ image `src` attributes from a site!
 
 ## Resources
 
-* Scraping is a big topic, and it takes *a lot* of practice to get comfortable
+- Scraping is a big topic, and it takes _a lot_ of practice to get comfortable
   doing it. The below resource is a great place to learn more about scraping and
   even get some practice with simple examples. If you felt really confused by
   this reading, we recommend checking it out before moving on.
-  * [*The Bastard's Book of Ruby* - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
-* [Nokogiri Installation Guide][]
+  - [_The Bastard's Book of Ruby_ - Parsing HTML with Nokogiri](http://ruby.bastardsbook.com/chapters/html-parsing/)
+- [Nokogiri Installation Guide][]
 
-[Nokogiri Installation Guide]: http://www.nokogiri.org/tutorials/installing_nokogiri.html
-
-
+[nokogiri installation guide]: http://www.nokogiri.org/tutorials/installing_nokogiri.html
