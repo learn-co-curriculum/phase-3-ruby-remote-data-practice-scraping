@@ -1,4 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
 
-html = open("https://flatironschool.com/")
+doc = Nokogiri::HTML(URI.open("https://flatironschool.com/"))
+p doc.css(".cli-modal-footer")[0].attributes
+
